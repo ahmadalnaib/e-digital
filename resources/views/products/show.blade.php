@@ -24,12 +24,16 @@
 
                            {{ $product->price }}
                          </div>
-
-                            <div class="mt-3">
-                             <x-primary-button >
-                               Pay
-                             </x-primary-button>
-                          </div>
+                          
+                         <form action="{{route('cart.product.store')}}" method="post">
+                          @csrf
+                          <input type="hidden" name="product_id" value="{{$product->id}}">
+                           <div class="mt-3">
+                            <x-primary-button >
+                              Pay
+                            </x-primary-button>
+                         </div>
+                         </form>
                   </div>
           
           </div>
