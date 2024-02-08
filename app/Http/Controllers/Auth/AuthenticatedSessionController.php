@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Cart;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use App\Providers\RouteServiceProvider;
+use App\Http\Requests\Auth\LoginRequest;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -25,9 +26,16 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        $cart=Cart::bySession()->first();
+
         $request->authenticate();
 
         $request->session()->regenerate();
+
+        optional($cart)->update([
+           'session_id'=>session()->getId(),
+           'user_id'=>auth()->id()
+        ]);
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
@@ -37,11 +45,16 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        $cart=Cart::bySession()->first();
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+        optional($cart)->update([
+            'session_id'=>session()->getId(),
+           
+         ]);
 
         return redirect('/');
     }
