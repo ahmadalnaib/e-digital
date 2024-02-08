@@ -17,6 +17,11 @@ class Cart extends Model
         return $this->where('session_id', session()->getId());
     }
 
+    public function total()
+    {
+        return $this->products->sum('price');
+    }
+
 
     public function products()
     {

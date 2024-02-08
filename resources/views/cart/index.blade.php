@@ -37,7 +37,7 @@
                    
 
                         <div class="mt-4">
-                            <div class="mb-2">Cart total: x </div>
+                            <div class="mb-2">Cart total: {{$cart->total()}} </div>
                            
                                 <x-primary-button>
                                     CHECKOUT
