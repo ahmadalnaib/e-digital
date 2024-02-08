@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\CardProductController;
 Route::get('/',HomeController::class)->name('home');
 Route::get('/product/{product:slug}',[ProductController::class,'show'])->name('product.show');
 Route::post('/cart/products',[CardProductController::class,'store'])->name('cart.product.store');
+Route::get('/cart',[CartController::class,'index'])->name('cart.index');
 
 
 Route::middleware('auth')->group(function () {
