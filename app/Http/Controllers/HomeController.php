@@ -11,7 +11,7 @@ class HomeController extends Controller
 
     public function __invoke()
     {
-        $products=Product::all();
+        $products=Product::take(3)->get();
         return view('home',compact('products'));
     }
 }

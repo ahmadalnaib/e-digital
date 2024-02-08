@@ -30,7 +30,7 @@
                           <input type="hidden" name="product_id" value="{{$product->id}}">
                            <div class="mt-3">
                             <x-primary-button >
-                              Pay
+                              ADD TO CART
                             </x-primary-button>
                          </div>
                          </form>

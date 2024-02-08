@@ -1,56 +1,72 @@
 <x-app-layout>
-  <x-slot name="header">
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-          {{ __('Products') }}
-      </h2>
-  </x-slot>
 
-  <section class="w-full py-20 bg-white">
-    <div class="flex flex-col items-center px-12 mx-auto max-w-7xl lg:flex-row">
-        <div class="relative z-20 flex flex-col items-start justify-center w-full h-full lg:w-5/12">
-            <p class="pb-5 text-sm font-medium tracking-wide text-pink-500 uppercase">The Ultimate Design Treasury</p>
-            <h1 class="text-5xl font-bold xl:text-6xl pb-7 ">The Definitive Design Vault</h1>
-            <p class="text-lg text-gray-500 pb-7">Dive into our carefully assembled selection of designs, meticulously constructed to deliver pure excellence for your projects.</p>
-            <div class="flex flex-col items-center w-full sm:w-auto sm:flex-row sm:space-x-10">
-                <a href="#_" class="px-7 sm:w-auto justify-center w-full flex items-center overflow-hidden group relative py-3.5 text-xl font-medium text-white bg-gray-900 rounded-full">
-                    <span class="absolute inset-0 w-full h-0 transition-all duration-300 ease-out bg-pink-500 group-hover:h-full"></span>
-                    <span class="relative">Get Started</span>
-                </a>
-                <a href="#_" class="flex items-center mt-10 text-xl font-medium underline transition duration-150 ease-out hover:text-pink-500 sm:mt-0">
-                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
-                    <span>Learn More</span>
-                </a>
+
+    <section class="pt-24 bg-white tails-selected-element pb-4">
+        <div class="px-12 mx-auto max-w-7xl">
+            <div class="w-full mx-auto text-left md:w-11/12 xl:w-9/12 md:text-center">
+                <h1
+                    class="mb-8 text-4xl font-extrabold leading-none tracking-normal text-gray-900 md:text-6xl md:tracking-tight">
+                    <span>Start</span> <span
+                        class="block w-full py-2 text-transparent bg-clip-text leading-12 bg-gradient-to-r from-green-400 to-purple-500 lg:inline"
+                        data-primary="green-400">building a buzz</span> <span class="">around your product 🚀</span>
+                </h1>
+                <p class="px-0 mb-8 text-lg text-gray-600 md:text-xl lg:px-24">
+                    Start gaining the traction you've always wanted with our next-level templates and designs. Crafted
+                    to help you tell your story.
+                </p>
+                <div class="mb-4 space-x-0 md:space-x-2 md:mb-8">
+                    <a href="#_"
+                        class="inline-flex items-center justify-center w-full px-6 py-3 mb-2 text-lg text-white bg-green-400 rounded-2xl sm:w-auto sm:mb-0"
+                        data-primary="green-400" data-rounded="rounded-2xl">
+                        Get Started
+                        <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <a href="#_"
+                        class="inline-flex items-center justify-center w-full px-6 py-3 mb-2 text-lg bg-gray-100 rounded-2xl sm:w-auto sm:mb-0"
+                        data-rounded="rounded-2xl">
+                        Learn More
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
             </div>
+
         </div>
+    </section>
 
-        <div class="relative z-10 w-full h-full my-16 lg:my-0 lg:w-7/12">
-            <img class="relative z-40 w-full h-full" src="https://cdn.devdojo.com/images/june2021/home-hero.png">
-            <div class="box-content absolute inset-0 z-30 hidden scale-150 translate-x-40 translate-y-10 rounded-full w-80 lg:block h-80 xl:w-96 xl:h-96 bg-pink-50"></div>
-            <div class="absolute bottom-0 left-0 z-20 hidden -translate-x-3 -translate-y-12 rounded-full opacity-50 w-72 lg:block h-72 bg-yellow-50"></div>
-            <div class="absolute top-0 left-0 z-20 hidden -translate-x-12 -translate-y-12 rounded-full opacity-50 w-72 lg:block h-72 bg-blue-50"></div>
+    <section class="w-full bg-white">
+        <div class="py-10 mx-auto max-w-7xl md:px-8">
+            @foreach($products->chunk(2) as $chunk)
+                <div class="flex flex-col md:flex-row md:space-x-8 mb-8">
+                    @foreach($chunk as $index => $product)
+                        <div class="flex flex-col items-center w-full overflow-hidden bg-gray-100 md:rounded-xl md:flex-row p-10 {{ $index % 2 == 0 ? '' : 'md:flex-row-reverse' }}" data-rounded="rounded-xl" data-rounded-max="rounded-full">
+                            <div class="flex flex-col w-full p-10 mt-4 text-center md:w-1/2 md:mt-0">
+                                <p class="mb-4 text-3xl font-medium leading-none">{{ $product->name }}</p>
+                                <h2 class="max-w-md mx-auto mb-6 text-4xl font-semibold md:leading-tight md:text-5xl">{{ $product->description }}</h2>
+                                <a href="{{ route('product.show', $product) }}" class="flex items-center w-auto mx-auto text-lg leading-tight text-center text-blue-600 hover:underline" data-primary="blue-600">
+                                    <span>Learn More</span>
+                                    <svg class="w-3 h-3 mt-0.5 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                </a>
+                            </div>
+                            <div class="w-full mt-7 md:w-1/2 md:mt-0">
+                                <img src="https://cdn.devdojo.com/images/april2021/apple-features-3.jpg" class="w-full">
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @endforeach
         </div>
-    </div>
-</section>
+    </section>
 
 
-  <div class="py-12">
-      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-       
-              <div class="py-12 text-gray-900">
-                 
-                  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                      @foreach ($products as $product)
-                          <a href="{{route('product.show',$product)}}" class="bg-white p-6 overflow-hidden shadow-sm sm:rounded-lg">
-                              <div class="p-6">
-                                  <h2 class="text-2xl font-bold mb-2">{{ $product->name }}</h2>
-                                  <p class="text-gray-600 mb-4">{{ $product->description }}</p>
-                                  <p class="text-gray-800 font-bold text-xl">{{ $product->price }}</p>
-                              </div>
-                          </a>
-                      @endforeach
-                  </div>
-          
-          </div>
-      </div>
-  </div>
+
 </x-app-layout>
