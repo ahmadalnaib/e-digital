@@ -19,5 +19,8 @@ class CardProductController extends Controller
                'session_id' => session()->getId()
            ]
        );
+
+        $cart->products()->syncWithoutDetaching($product);
+        return redirect()->back();
     }
 }
