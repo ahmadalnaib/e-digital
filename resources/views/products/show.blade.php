@@ -22,7 +22,7 @@
                          </div>
                          <div>
 
-                           {{ $product->price }}
+                         @money($product->price)
                          </div>
                           
                          <form action="{{route('cart.product.store')}}" method="post">

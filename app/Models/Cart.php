@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Cart extends Model
 {
-     protected $fillable = ['user_id', 'session_id'];
+    protected $fillable = ['user_id', 'session_id'];
     use HasFactory;
 
 
     public function scopeBySession()
     {
-        return $this->where('session_id', session()->getId());
+        return $this->where('session_id', session()->getId())->latest();
     }
 
     public function total()

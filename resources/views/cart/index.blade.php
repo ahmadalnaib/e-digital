@@ -21,7 +21,7 @@
                                     {{ $product->description }}
                                 </div>
                                 <div class="text-green-600">
-                                    {{ $product->price }}
+                                    @money($product->price)
                                 </div>
                                 <form action="{{route('cart.product.destroy',$product)}}" method="post">
                                     @csrf
@@ -37,7 +37,7 @@
                    
 
                         <div class="mt-4">
-                            <div class="mb-2">Cart total: {{$cart->total()}} </div>
+                            <div class="mb-2">Cart total: @money($cart->total()) </div>
                            
                                 <x-primary-button>
                                     CHECKOUT
