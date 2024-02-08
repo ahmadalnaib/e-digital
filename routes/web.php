@@ -21,6 +21,7 @@ use App\Http\Controllers\CardProductController;
 Route::get('/',HomeController::class)->name('home');
 Route::get('/product/{product:slug}',[ProductController::class,'show'])->name('product.show');
 Route::post('/cart/products',[CardProductController::class,'store'])->name('cart.product.store');
+Route::delete('/cart/products/{product:slug}',[CardProductController::class,'destroy'])->name('cart.product.destroy');
 Route::get('/cart',[CartController::class,'index'])->name('cart.index');
 
 

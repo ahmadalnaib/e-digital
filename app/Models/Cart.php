@@ -12,6 +12,12 @@ class Cart extends Model
     use HasFactory;
 
 
+    public function scopeBySession()
+    {
+        return $this->where('session_id', session()->getId());
+    }
+
+
     public function products()
     {
         return $this->belongsToMany(Product::class)->withTimestamps();

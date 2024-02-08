@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
       View::composer('*', function ($view) {
-        $view->with('cart',Cart::where('session_id',session()->getId())->first());
+        $view->with('cart',Cart::bySession()->first());
       });
     }
 }

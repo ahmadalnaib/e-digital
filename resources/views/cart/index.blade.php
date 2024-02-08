@@ -23,7 +23,7 @@
                                 <div class="text-green-600">
                                     {{ $product->price }}
                                 </div>
-                                <form action="" method="post">
+                                <form action="{{route('cart.product.destroy',$product)}}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <div class="mt-3">

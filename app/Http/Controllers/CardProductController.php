@@ -23,4 +23,11 @@ class CardProductController extends Controller
         $cart->products()->syncWithoutDetaching($product);
         return redirect()->back();
     }
+
+    public function destroy(Product $product)
+    {
+        $cart = Cart::bySession()->first();
+        $cart->products()->detach($product);
+        return redirect()->back();
+    }
 }
