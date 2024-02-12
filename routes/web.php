@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CardProductController;
+use App\Http\Controllers\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ Route::get('/product/{product:slug}',[ProductController::class,'show'])->name('p
 Route::post('/cart/products',[CardProductController::class,'store'])->name('cart.product.store');
 Route::delete('/cart/products/{product:slug}',[CardProductController::class,'destroy'])->name('cart.product.destroy');
 Route::get('/cart',[CartController::class,'index'])->name('cart.index');
-
+Route::get('/checkout',[CheckoutController::class,'index'])->name('checkout.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

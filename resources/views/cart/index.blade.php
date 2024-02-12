@@ -39,9 +39,9 @@
                         <div class="mt-4">
                             <div class="mb-2">Cart total: @money($cart->total()) </div>
                            
-                                <x-primary-button>
+                                <x-link-button :href="route('checkout.index')">
                                     CHECKOUT
-                                </x-primary-button>
+                                </x-link-button>
                         
 
 
